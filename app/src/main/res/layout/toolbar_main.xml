@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolBar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/colorPrimary">
+
+    <TextView
+        android:id="@+id/toolBar_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="首页"
+        android:textColor="#ffffff"
+        android:textSize="22sp" />
+
+    <!--<RelativeLayout-->
+        <!--android:visibility="visible"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center">-->
+
+        <android.support.v7.widget.SearchView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:iconifiedByDefault="true"
+            app:queryHint="@string/app_name"></android.support.v7.widget.SearchView>
+
+    <!--</RelativeLayout>-->
+
+</android.support.v7.widget.Toolbar>

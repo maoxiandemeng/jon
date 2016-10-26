@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yidong.jon">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application
+        android:name="com.yidong.jon.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.yidong.jon.ui.activity.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.yidong.jon.ui.activity.GuideActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name="com.yidong.jon.ui.activity.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yidong.jon.ui.activity.CardPageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yidong.jon.ui.activity.BehaviorActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.yidong.jon.ui.activity.StickActivity" />
+        <activity android:name="com.yidong.jon.ui.activity.FristActivity" />
+        <activity
+            android:name="com.yidong.jon.ui.activity.SecondActivity"
+            android:theme="@style/Transparent" />
+        <activity android:name="com.yidong.jon.ui.activity.WaterActivity" />
+        <activity android:name="com.yidong.jon.ui.activity.LoadingActivity" />
+        <activity android:name="com.yidong.jon.ui.activity.LeakcanaryActivity" />
+
+    </application>
+
+</manifest>

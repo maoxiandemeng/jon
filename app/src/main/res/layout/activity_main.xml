@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_main" />
+
+    <com.yidong.jon.widget.viewpage.ScrollViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#888" />
+
+    <com.yidong.jon.widget.AlphaIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal">
+
+        <com.yidong.jon.widget.AlphaView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            app:av_tabIconNormal="@drawable/guide_home_nm"
+            app:av_tabIconSelected="@drawable/guide_home_on"
+            app:av_tabText="首页"
+            app:av_tabTextSize="14sp"
+            app:av_textColorNormal="@color/alpha_view_text_normal"
+            app:av_textColorSelected="@color/alpha_view_text_select" />
+
+        <com.yidong.jon.widget.AlphaView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            app:av_tabIconNormal="@drawable/guide_categories_nm"
+            app:av_tabIconSelected="@drawable/guide_categories_on"
+            app:av_tabText="分类"
+            app:av_tabTextSize="14sp"
+            app:av_textColorNormal="@color/alpha_view_text_normal"
+            app:av_textColorSelected="@color/alpha_view_text_select" />
+
+        <com.yidong.jon.widget.AlphaView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            app:av_tabIconNormal="@drawable/guide_tfaccount_nm"
+            app:av_tabIconSelected="@drawable/guide_tfaccount_on"
+            app:av_tabText="品牌馆"
+            app:av_tabTextSize="14sp"
+            app:av_textColorNormal="@color/alpha_view_text_normal"
+            app:av_textColorSelected="@color/alpha_view_text_select" />
+
+        <com.yidong.jon.widget.AlphaView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            app:av_tabIconNormal="@drawable/guide_cart_nm"
+            app:av_tabIconSelected="@drawable/guide_cart_on"
+            app:av_tabText="购物车"
+            app:av_tabTextSize="14sp"
+            app:av_textColorNormal="@color/alpha_view_text_normal"
+            app:av_textColorSelected="@color/alpha_view_text_select" />
+
+        <com.yidong.jon.widget.AlphaView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            app:av_tabIconNormal="@drawable/guide_account_nm"
+            app:av_tabIconSelected="@drawable/guide_account_on"
+            app:av_tabText="我"
+            app:av_tabTextSize="14sp"
+            app:av_textColorNormal="@color/alpha_view_text_normal"
+            app:av_textColorSelected="@color/alpha_view_text_select" />
+
+
+    </com.yidong.jon.widget.AlphaIndicator>
+
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/toollBar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="?attr/colorPrimary" />-->
+
+    <!--<SwipeToLoadLayout-->
+    <!--android:id="@+id/swipeToLoadLayout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--<include-->
+    <!--android:id="@+id/swipe_refresh_header"-->
+    <!--layout="@layout/refresh_header_view" />-->
+
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/swipe_target"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" />-->
+    <!--</SwipeToLoadLayout>-->
+
+</LinearLayout>

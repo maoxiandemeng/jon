@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--循环滑动的ViewPager-->
+    <declare-styleable name="LoopViewPager">
+        <attr name="isAutoLoop" format="boolean"/>
+        <attr name="delayTime" format="integer"/>
+    </declare-styleable>
+
+    <!--圆形指示器-->
+    <declare-styleable name="CircleIndicator">
+        <attr name="normalRadius" format="dimension"/>
+        <attr name="normalRadiusColor" format="color"/>
+        <attr name="selectedRadius" format="dimension"/>
+        <attr name="selectedRadiusColor" format="color"/>
+        <attr name="dotPadding" format="dimension"/>
+        <attr name="isStroke" format="boolean"/>
+        <attr name="normalStrokeWidth" format="dimension"/>
+        <attr name="isBlink" format="boolean"/>
+    </declare-styleable>
+
+    <!--方形指示器-->
+    <declare-styleable name="RectIndicator">
+        <attr name="ri_rectWidth" format="dimension"/>
+        <attr name="ri_rectHeight" format="dimension"/>
+        <attr name="ri_normalColor" format="color"/>
+        <attr name="ri_selectedColor" format="color"/>
+        <attr name="ri_dotPadding" format="dimension"/>
+        <attr name="ri_isStroke" format="boolean"/>
+        <attr name="ri_normalStrokeWidth" format="dimension"/>
+        <attr name="ri_isBlink" format="boolean"/>
+    </declare-styleable>
+
+    <!--Tab指示器-->
+    <declare-styleable name="TabTitleIndicator">
+        <attr name="tti_indicatorHeight" format="dimension"/>
+        <attr name="tti_indicatorColor" format="color"/>
+        <attr name="tti_underlineHeight" format="dimension"/>
+        <attr name="tti_underlineColor" format="color"/>
+        <attr name="tti_dividerWidth" format="dimension"/>
+        <attr name="tti_dividerPaddingTopBottom" format="dimension"/>
+        <attr name="tti_dividerColor" format="color"/>
+        <attr name="tti_triangleHeight" format="dimension"/>
+        <attr name="tti_tabPaddingLeftRight" format="dimension"/>
+        <attr name="tti_tabTextSizeNormal" format="dimension"/>
+        <attr name="tti_tabTextSizeSelected" format="dimension"/>
+        <attr name="tti_tabTextColorNormal" format="color"/>
+        <attr name="tti_tabTextColorSelected" format="color"/>
+        <attr name="tti_tabBackground" format="reference"/>
+        <attr name="tti_visibleCount" format="integer"/>
+        <attr name="tti_scrollOffset" format="dimension"/>
+    </declare-styleable>
+
+    <!-- 刷新 -->
+    <declare-styleable name="SwipeToLoadLayout">
+        <attr name="refresh_enabled" format="boolean" />
+        <attr name="load_more_enabled" format="boolean" />
+
+        <attr name="swipe_style" format="enum">
+            <enum name="classic" value="0" />
+            <enum name="above" value="1" />
+            <enum name="blew" value="2" />
+            <enum name="scale" value="3" />
+        </attr>
+
+        <attr name="drag_ratio" format="float" />
+
+        <attr name="refresh_trigger_offset" format="dimension" />
+        <attr name="load_more_trigger_offset" format="dimension" />
+        <attr name="refresh_final_drag_offset" format="dimension" />
+        <attr name="load_more_final_drag_offset" format="dimension" />
+
+        <attr name="swiping_to_refresh_to_default_scrolling_duration" format="integer" />
+        <attr name="release_to_refreshing_scrolling_duration" format="integer" />
+        <attr name="refresh_complete_delay_duration" format="integer" />
+        <attr name="refresh_complete_to_default_scrolling_duration" format="integer" />
+        <attr name="default_to_refreshing_scrolling_duration" format="integer" />
+        <attr name="swiping_to_load_more_to_default_scrolling_duration" format="integer" />
+        <attr name="release_to_loading_more_scrolling_duration" format="integer" />
+        <attr name="load_more_complete_delay_duration" format="integer" />
+        <attr name="load_more_complete_to_default_scrolling_duration" format="integer" />
+        <attr name="default_to_loading_more_scrolling_duration" format="integer" />
+    </declare-styleable>
+
+    <!--透明渐变的底部View-->
+    <declare-styleable name="AlphaView">
+        <attr name="av_tabIconNormal" format="reference"/>
+        <attr name="av_tabIconSelected" format="reference"/>
+        <attr name="av_tabText" format="string"/>
+        <attr name="av_tabTextSize" format="dimension"/>
+        <attr name="av_textColorNormal" format="color"/>
+        <attr name="av_textColorSelected" format="color"/>
+    </declare-styleable>
+
+</resources>
