@@ -1,6 +1,7 @@
 package com.yidong.jon.ui.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jon.lib.SdkActivity;
 import com.yidong.jon.model.Adv;
 import com.yidong.jon.R;
 import com.yidong.jon.base.BaseFragment;
@@ -142,7 +144,8 @@ public class HomeFragment extends BaseFragment {
 
     @OnClick(R.id.leak)
     public void onLeak() {
-        openActivity(LeakcanaryActivity.class);
+        Intent intent = new Intent(getActivity(), SdkActivity.class);
+        startActivity(intent);
     }
 
 }

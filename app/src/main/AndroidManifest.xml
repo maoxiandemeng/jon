@@ -44,6 +44,9 @@
         <activity android:name="com.yidong.jon.ui.activity.LoadingActivity" />
         <activity android:name="com.yidong.jon.ui.activity.LeakcanaryActivity" />
 
+
+        <activity android:name="com.jon.lib.SdkActivity"/>
+
     </application>
 
 </manifest>

@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 //            "rfgreht", "bssvs", "j65", "14e3d", "dvs", "dvsvds", "dsv", "dvscd", "ds", "facx", "vds", };
 //    private MainAdapter adapter;
 //    private List<String> list = new ArrayList<>();
-    private String[] mTitles = {"首页", "分类", "品牌馆", "购物车", "我"};
+    private String[] mTitles = {"首页", "分类", "发现", "消息", "我"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         fragments.add(FiveFragment.newInstance("第五个"));
         MainViewPagerAdapter adapter = new MainViewPagerAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(adapter);
-        mViewPager.setCanScroll(false);
+        mViewPager.setCanScroll(true);
         mIndicator.setViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(this);
 //        mRecyclerView.setHasFixedSize(true);
