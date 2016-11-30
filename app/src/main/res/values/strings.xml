@@ -5,4 +5,19 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+
+    <string name="start">下载</string>
+    <string name="pause">暂停</string>
+    <string name="delete">完成</string>
+    <string name="tasks_manager_demo_name" formatted="false">task: %d</string>
+    <string name="tasks_manager_demo_status_loading">Status: loading...</string>
+    <string name="tasks_manager_demo_status_pending">等待中...</string>
+    <string name="tasks_manager_demo_status_started">开始下载</string>
+    <string name="tasks_manager_demo_status_connected">连接成功</string>
+    <string name="tasks_manager_demo_status_progress">下载中...</string>
+    <string name="tasks_manager_demo_status_downloading" formatted="false">Status: downloading %d</string>
+    <string name="tasks_manager_demo_status_error">下载出错</string>
+    <string name="tasks_manager_demo_status_paused">暂停下载</string>
+    <string name="tasks_manager_demo_status_completed">下载完成</string>
+    <string name="tasks_manager_demo_status_not_downloaded">Status: has not downloaded</string>
 </resources>

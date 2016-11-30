@@ -10,18 +10,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jon.lib.SdkActivity;
-import com.yidong.jon.model.Adv;
 import com.yidong.jon.R;
 import com.yidong.jon.base.BaseFragment;
 import com.yidong.jon.constant.MyConstant;
+import com.yidong.jon.download.DownloadActivity;
 import com.yidong.jon.imageloader.ImageLoader;
 import com.yidong.jon.imageloader.ImageLoaderUtil;
+import com.yidong.jon.model.Adv;
 import com.yidong.jon.retrofit.HttpHelper;
 import com.yidong.jon.retrofit.ListResult;
 import com.yidong.jon.ui.activity.BehaviorActivity;
 import com.yidong.jon.ui.activity.CardPageActivity;
 import com.yidong.jon.ui.activity.FristActivity;
-import com.yidong.jon.ui.activity.LeakcanaryActivity;
 import com.yidong.jon.ui.activity.LoadingActivity;
 import com.yidong.jon.ui.activity.StickActivity;
 import com.yidong.jon.ui.activity.WaterActivity;
@@ -146,6 +146,11 @@ public class HomeFragment extends BaseFragment {
     public void onLeak() {
         Intent intent = new Intent(getActivity(), SdkActivity.class);
         startActivity(intent);
+    }
+
+    @OnClick(R.id.download)
+    public void onDownload() {
+        openActivity(DownloadActivity.class);
     }
 
 }
