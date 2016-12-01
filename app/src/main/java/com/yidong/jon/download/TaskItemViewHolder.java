@@ -44,7 +44,15 @@ public class TaskItemViewHolder extends RecyclerView.ViewHolder {
         taskPb.setProgress(1);
 
         taskStatusTv.setText(R.string.tasks_manager_demo_status_completed);
-        taskActionBtn.setText(R.string.delete);
+        taskActionBtn.setText("安装");
+    }
+
+    public void updateDownloaded2() {
+        taskPb.setMax(1);
+        taskPb.setProgress(1);
+
+        taskStatusTv.setText(R.string.tasks_manager_demo_status_completed);
+        taskActionBtn.setText("已安装");
     }
 
     public void updateNotDownloaded(final int status, final long sofar, final long total) {

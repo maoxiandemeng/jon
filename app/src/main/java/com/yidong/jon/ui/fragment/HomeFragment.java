@@ -19,6 +19,7 @@ import com.yidong.jon.imageloader.ImageLoaderUtil;
 import com.yidong.jon.model.Adv;
 import com.yidong.jon.retrofit.HttpHelper;
 import com.yidong.jon.retrofit.ListResult;
+import com.yidong.jon.ui.activity.BadgerActivity;
 import com.yidong.jon.ui.activity.BehaviorActivity;
 import com.yidong.jon.ui.activity.CardPageActivity;
 import com.yidong.jon.ui.activity.FristActivity;
@@ -151,6 +152,11 @@ public class HomeFragment extends BaseFragment {
     @OnClick(R.id.download)
     public void onDownload() {
         openActivity(DownloadActivity.class);
+    }
+
+    @OnClick(R.id.badger)
+    public void onBadger() {
+        openActivity(BadgerActivity.class);
     }
 
 }

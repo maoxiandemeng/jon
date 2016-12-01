@@ -1,5 +1,6 @@
 package com.yidong.jon.download;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.liulishuo.filedownloader.FileDownloader;
 import com.liulishuo.filedownloader.model.FileDownloadStatus;
 import com.liulishuo.filedownloader.util.FileDownloadUtils;
 import com.yidong.jon.R;
+import com.yidong.jon.utils.RunAppUtil;
 
 import java.io.File;
 
@@ -21,6 +23,11 @@ import java.io.File;
  */
 
 public class TaskItemAdapter extends RecyclerView.Adapter<TaskItemViewHolder> {
+    private Context context;
+
+    public TaskItemAdapter(Context context) {
+        this.context = context;
+    }
 
     private FileDownloadListener taskDownloadListener = new FileDownloadSampleListener() {
 
@@ -115,8 +122,14 @@ public class TaskItemAdapter extends RecyclerView.Adapter<TaskItemViewHolder> {
             if (tag == null) {
                 return;
             }
+            File file = new File(task.getPath());
+            String apkFilePackage = RunAppUtil.getApkFilePackage(context, file);
+            if (RunAppUtil.isAppInstalled(context, apkFilePackage)) {
+                tag.updateDownloaded2();
+            } else {
+                tag.updateDownloaded();
+            }
 
-            tag.updateDownloaded();
             TasksManager.getImpl().removeTaskForViewHolder(task.getId());
         }
     };
@@ -149,11 +162,18 @@ public class TaskItemAdapter extends RecyclerView.Adapter<TaskItemViewHolder> {
                         .updateViewHolder(holder.id, holder);
 
                 task.start();
-            } else if (action.equals(v.getResources().getString(R.string.delete))) {
+            } else if (action.equals("安装")) {
                 // to delete
-                new File(TasksManager.getImpl().get(holder.position).getPath()).delete();
-                holder.taskActionBtn.setEnabled(true);
-                holder.updateNotDownloaded(FileDownloadStatus.INVALID_STATUS, 0, 0);
+                File file = new File(TasksManager.getImpl().get(holder.position).getPath());
+//                String apkFilePackage = RunAppUtil.getApkFilePackage(context, file);
+//                if (!RunAppUtil.isAppInstalled(context, apkFilePackage)) {
+                    RunAppUtil.installApp(context, file);
+//                }
+//                new File(TasksManager.getImpl().get(holder.position).getPath()).delete();
+//                holder.taskActionBtn.setEnabled(true);
+//                holder.updateNotDownloaded(FileDownloadStatus.INVALID_STATUS, 0, 0);
+            } else if (action.equals("已安装")) {
+
             }
         }
     };

@@ -67,6 +67,14 @@
         android:padding="8dp"
         android:text="下载 Demo" />
 
+    <TextView
+        android:id="@+id/badger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="应用图标的角标" />
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="100dp"

@@ -22,7 +22,7 @@ public class DownloadActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         downloadRecycler.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new TaskItemAdapter();
+        adapter = new TaskItemAdapter(this);
         downloadRecycler.setAdapter(adapter);
 
 
