@@ -1,12 +1,18 @@
 package com.yidong.jon.ui.activity;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.yidong.jon.base.BaseActivity;
+import com.yidong.jon.provider.db.MyOpenHelper;
 import com.yidong.jon.ui.fragment.FourFragment;
 import com.yidong.jon.ui.fragment.HomeFragment;
 import com.yidong.jon.ui.fragment.ThreeFragment;
@@ -65,6 +71,11 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 //        adapter = new MainAdapter(MainActivity.this, list);
 //        mRecyclerView.setAdapter(adapter);
 //        autoRefresh();
+        Uri uri = Uri.parse("content://com.yidong.jon.provider.MyContentProvider/my");
+        ContentValues values = new ContentValues();
+        values.put(MyOpenHelper.NAME_ID, "1234567");
+        getContentResolver().insert(uri, values);
+
     }
 
     @Override

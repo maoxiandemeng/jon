@@ -17,6 +17,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        //添加aar包时必须要加的
         flatDir {
             dirs 'libs'
         }
