@@ -48,6 +48,7 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.image)
     ImageView imageView;
     private String mTitle = "DefaultValue";
+    private Call<ListResult<Adv>> call;
 
     public static HomeFragment newInstance(String title) {
         Bundle bundle = new Bundle();
@@ -67,17 +68,17 @@ public class HomeFragment extends BaseFragment {
 //        tv.setText(mTitle);
         HttpHelper httpHelper = new HttpHelper(getContext());
         ApiRequest service = httpHelper.getService(ApiRequest.class);
-        Call<ListResult<Adv>> call = service.getData("3");
+        call = service.getData("3");
         call.enqueue(new Callback<ListResult<Adv>>() {
             @Override
             public void onResponse(Call<ListResult<Adv>> call, Response<ListResult<Adv>> response) {
-                Log.i(TAG, "onResponse:"+response.body().getData());
-                String pic = response.body().getData().get(0).getAdvSlidePic();
-                Log.i(TAG, "onResponse:"+pic);
-                tv.setText(pic);
-                ImageLoader.Builder url = new ImageLoader.Builder().url(MyConstant.IMAGE_URL + pic).imgView(imageView);
-                ImageLoader build = url.build();
-                ImageLoaderUtil.getInstance().loadImage(getContext(), build);
+//                Log.i(TAG, "onResponse:"+response.body().getData());
+//                String pic = response.body().getData().get(0).getAdvSlidePic();
+//                Log.i(TAG, "onResponse:"+pic);
+//                tv.setText(pic);
+//                ImageLoader.Builder url = new ImageLoader.Builder().url(MyConstant.IMAGE_URL + pic).imgView(imageView);
+//                ImageLoader build = url.build();
+//                ImageLoaderUtil.getInstance().loadImage(getContext(), build);
 //                Glide.with(getActivity()).load(MyConstant.IMAGE_URL + pic).into(imageView);
             }
 
@@ -159,4 +160,11 @@ public class HomeFragment extends BaseFragment {
         openActivity(BadgerActivity.class);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (call != null){
+            call.cancel();
+        }
+    }
 }

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.yidong.jon.R;
+import com.yidong.jon.badger.ShortcutBadger;
 import com.yidong.jon.base.BaseActivity;
 import com.yidong.jon.utils.Helpers;
 
@@ -21,7 +22,6 @@ import java.util.zip.ZipFile;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import me.leolin.shortcutbadger.ShortcutBadger;
 
 public class BadgerActivity extends BaseActivity {
 
@@ -41,7 +41,8 @@ public class BadgerActivity extends BaseActivity {
 
         String code = getChannelCode();
         removeNum.setText(code);
-        Helpers.showToastShort(this, code);
+//        Helpers.showToastShort(this, code);
+
     }
 
     @Override
@@ -58,7 +59,7 @@ public class BadgerActivity extends BaseActivity {
                     Helpers.showToastShort(this, "个数不能为空！");
                     return;
                 }
-                boolean applyCount = ShortcutBadger.applyCount(this, Integer.parseInt(addCount));
+                boolean applyCount = ShortcutBadger.applyCount(BadgerActivity.this, Integer.parseInt(addCount));
                 Helpers.showToastShort(this, ""+applyCount);
                 break;
             case R.id.remove:
@@ -67,14 +68,14 @@ public class BadgerActivity extends BaseActivity {
                     Helpers.showToastShort(this, "个数不能为空！");
                     return;
                 }
-                boolean count = ShortcutBadger.removeCount(this);
+                boolean count = ShortcutBadger.removeCount(BadgerActivity.this);
                 Helpers.showToastShort(this, ""+count);
                 break;
         }
     }
 
     /**
-     * 得到渠道的表示符
+     * 得到渠道的标示符
      * @return
      */
     private String getChannelCode(){

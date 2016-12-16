@@ -134,7 +134,7 @@ public class CountDownView extends View {
             @Override
             public void onTick(long millisUntilFinished) {
                 progress = (millis - millisUntilFinished) * 360 / millis;
-                Log.d(TAG, "progress:" + progress);
+//                Log.d(TAG, "progress:" + progress);
                 invalidate();
             }
 

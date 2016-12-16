@@ -2,12 +2,14 @@ package com.yidong.jon;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.os.StrictMode;
 
 import com.liulishuo.filedownloader.FileDownloader;
 import com.liulishuo.filedownloader.util.FileDownloadHelper;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.yidong.jon.receiver.NetworkReceiver;
 
 import java.net.Proxy;
 import java.util.concurrent.TimeUnit;
@@ -27,10 +29,10 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
-        if (!LeakCanary.isInAnalyzerProcess(this)){
-            enabledStrictMode();
-            RefWatcher refWatcher = LeakCanary.install(this);
-        }
+//        if (!LeakCanary.isInAnalyzerProcess(this)){
+//            enabledStrictMode();
+//            RefWatcher refWatcher = LeakCanary.install(this);
+//        }
         FileDownloader.init(getApplicationContext(),
                 new FileDownloadHelper.OkHttpClientCustomMaker() { // is not has to provide.
                     @Override
@@ -46,6 +48,7 @@ public class MyApplication extends Application {
                     }
                 });
     }
+
     private void enabledStrictMode() {
         if (SDK_INT >= GINGERBREAD) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder() //
