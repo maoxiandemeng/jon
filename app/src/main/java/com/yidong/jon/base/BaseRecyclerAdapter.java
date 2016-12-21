@@ -14,8 +14,8 @@ import java.util.ArrayList;
  */
 
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
-    public static final int TYPE_HEADER = 0;
-    public static final int TYPE_EMPTY = 1;
+    public static final int TYPE_HEADER = 1;
+    public static final int TYPE_EMPTY = 2;
 
     private OnRecyclerItemClickListener onRecyclerItemClickListener;
 
@@ -50,12 +50,13 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
             }
         }
 
-        return super.getItemViewType(position - getHeaderLayoutCount());
+        return getDefItemViewType(position - getHeaderLayoutCount());
     }
+
+    public abstract int getDefItemViewType(int position);
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.i("info","viewType:"+viewType);
         if (mHeaderView != null && viewType == TYPE_HEADER) {
             return new BaseViewHolder(mHeaderView);
         } else if (mEmptyView != null && viewType == TYPE_EMPTY) {
@@ -68,11 +69,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
 
     @Override
     public void onBindViewHolder(final BaseViewHolder holder, int position) {
-        if (getItemViewType(position) == TYPE_HEADER) return;
-        if (getItemViewType(position) == TYPE_EMPTY) return;
+        int itemViewType = holder.getItemViewType();
+        if (itemViewType == TYPE_HEADER) return;
+        if (itemViewType == TYPE_EMPTY) return;
 
         final int realPosition = getRealPosition(holder);
-        onBind(holder, realPosition);
+        onBind(holder, realPosition, itemViewType);
 
         if (onRecyclerItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +86,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         }
     }
 
-    protected abstract void onBind(BaseViewHolder holder, int realPosition);
+    protected abstract void onBind(BaseViewHolder holder, int realPosition, int itemViewType);
 
     @Override
     public int getItemCount() {

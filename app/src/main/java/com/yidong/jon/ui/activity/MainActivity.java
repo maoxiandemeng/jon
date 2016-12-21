@@ -1,19 +1,12 @@
 package com.yidong.jon.ui.activity;
 
 import android.app.ActivityManager;
-import android.app.AlertDialog;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
-import android.content.BroadcastReceiver;
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,24 +15,21 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.yidong.jon.R;
 import com.yidong.jon.base.BaseActivity;
 import com.yidong.jon.provider.db.MyOpenHelper;
 import com.yidong.jon.receiver.NetworkReceiver;
+import com.yidong.jon.ui.adapter.MainViewPagerAdapter;
+import com.yidong.jon.ui.fragment.FiveFragment;
 import com.yidong.jon.ui.fragment.FourFragment;
 import com.yidong.jon.ui.fragment.HomeFragment;
 import com.yidong.jon.ui.fragment.ThreeFragment;
-import com.yidong.jon.utils.Helpers;
-import com.yidong.jon.utils.PkgUsageStatusUtil;
-import com.yidong.jon.widget.viewpage.ScrollViewPager;
-import com.yidong.jon.R;
-import com.yidong.jon.ui.adapter.MainViewPagerAdapter;
-import com.yidong.jon.ui.fragment.FiveFragment;
 import com.yidong.jon.ui.fragment.TwoFragment;
+import com.yidong.jon.utils.Helpers;
 import com.yidong.jon.widget.AlphaIndicator;
+import com.yidong.jon.widget.viewpage.ScrollViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,14 +89,14 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         values.put(MyOpenHelper.NAME_ID, "1234567");
         getContentResolver().insert(uri, values);
 
+        checkUsage();
+
 //        PkgUsageStatusUtil.getPkgUsageStatus();
 //        Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
 //        startActivity(intent);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    private void checkUsage() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //需要权限 <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
             //tools:ignore="ProtectedPermissions"/>
@@ -199,72 +189,4 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         unregisterReceiver(networkReceiver);
     }
 
-//    public class NetworkReceiver extends BroadcastReceiver {
-//        public static final int NET_NO = 0;
-//        public static final int NET_WIFI = 1;
-//        public static final int NET_MOBILE = 2;
-//        private int net_state = 1;
-//
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            ConnectivityManager connectivityManager = (ConnectivityManager) context
-//                    .getSystemService(Context.CONNECTIVITY_SERVICE);
-//            if (connectivityManager != null) {
-//                // 获取网络连接管理的对象
-//                NetworkInfo info = connectivityManager.getActiveNetworkInfo();
-//                if (info != null && info.isConnected()) {
-//                    // 判断当前网络是否已经连接
-//                    if (info.getState() == NetworkInfo.State.CONNECTED) {
-//                        String type = info.getTypeName();
-//                        if (type.equalsIgnoreCase("WIFI")) {
-//                            if (net_state != NET_WIFI) {
-//                                Toast.makeText(context, "已切换WIFI连接", Toast.LENGTH_SHORT).show();
-//                            }
-//                            net_state = NET_WIFI;
-//                        } else if (type.equalsIgnoreCase("MOBILE")) {
-//                            if (net_state != NET_MOBILE) {
-//                                Toast.makeText(context, "已切换2G/3G/4G,请注意流量使用", Toast.LENGTH_SHORT).show();
-//                            }
-//                            net_state = NET_MOBILE;
-//                        }
-//                    }
-//                } else {
-//                    if (net_state != NET_NO) {
-//                        setNetworkMethod();
-//                    }
-//                    net_state = 0;
-//                }
-//            }
-//        }
-//
-//    }
-//
-//    public void setNetworkMethod() {
-//        // 提示对话框
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setCancelable(false);
-//        AlertDialog dialog = builder.setTitle("网络设置提示")
-//                .setMessage("网络连接不可用,是否进行设置?")
-//                .setPositiveButton("设置",
-//                        new DialogInterface.OnClickListener() {
-//
-//                            @Override
-//                            public void onClick(DialogInterface dialog,
-//                                                int which) {
-//                                Intent intent = new Intent(
-//                                        Settings.ACTION_WIRELESS_SETTINGS);
-//                                startActivity(intent);
-//                            }
-//                        })
-//                .setNegativeButton("取消",
-//                        new DialogInterface.OnClickListener() {
-//
-//                            @Override
-//                            public void onClick(DialogInterface dialog,
-//                                                int which) {
-//                                dialog.dismiss();
-//                            }
-//                        }).create();
-//        dialog.show();
-//    }
 }

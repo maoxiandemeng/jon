@@ -3,44 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.yidong.jon">
 
-    <!--for Samsung-->
-    <uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
-    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
+    <!-- for Samsung -->
+    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" />
 
-    <!--for htc-->
-    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT"/>
+    <!-- for htc -->
+    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" />
 
-    <!--for sony-->
-    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE"/>
-    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE"/>
+    <!-- for sony -->
+    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" />
 
-    <!--for apex-->
-    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT"/>
+    <!-- for apex -->
+    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" />
 
-    <!--for solid-->
-    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE"/>
+    <!-- for solid -->
+    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" />
 
-    <!--for huawei-->
-    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE"/>
-    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS"/>
+    <!-- for huawei -->
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" />
 
-    <!--for ZUK-->
-    <uses-permission android:name="android.permission.READ_APP_BADGE"/>
+    <!-- for ZUK -->
+    <uses-permission android:name="android.permission.READ_APP_BADGE" />
 
-    <!--for OPPO-->
-    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS"/>
-    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS"/>
-
+    <!-- for OPPO -->
+    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--允许 弹出系统级别的AlterDialog-->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-
-    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
-        tools:ignore="ProtectedPermissions"/>
+    <!-- 允许 弹出系统级别的AlterDialog -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:name=".MyApplication"
@@ -82,19 +81,21 @@
         <activity android:name=".ui.activity.LeakcanaryActivity" />
         <activity android:name="com.jon.lib.SdkActivity" />
         <activity android:name=".download.DownloadActivity" />
-        <activity android:name=".ui.activity.BadgerActivity"></activity>
+        <activity android:name=".ui.activity.BadgerActivity" />
+        <activity android:name=".ui.activity.FlowActivity"></activity>
 
         <meta-data
             android:name="Channel ID"
-            android:value="UMENG_CHANNEL"></meta-data>
+            android:value="UMENG_CHANNEL" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="${UMENG_CHANNEL_VALUE}"></meta-data>
+            android:value="${UMENG_CHANNEL_VALUE}" />
 
         <provider
             android:name=".provider.MyContentProvider"
             android:authorities="com.yidong.jon.provider.MyContentProvider"
             android:exported="true" />
+
     </application>
 
 </manifest>

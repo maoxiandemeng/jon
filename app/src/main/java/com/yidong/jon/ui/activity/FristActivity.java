@@ -6,21 +6,32 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.yidong.jon.base.BaseActivity;
+import com.yidong.jon.base.BaseMvpActivity;
 import com.yidong.jon.base.BaseRecyclerAdapter;
 import com.yidong.jon.base.BaseViewHolder;
+import com.yidong.jon.imageloader.ImageLoader;
+import com.yidong.jon.imageloader.ImageLoaderUtil;
+import com.yidong.jon.model.VideoEntity;
+import com.yidong.jon.presenter.FristPresenter;
 import com.yidong.jon.ui.adapter.OnRecyclerViewClickListener;
 import com.yidong.jon.R;
 import com.yidong.jon.ui.adapter.FristAdapter;
 import com.yidong.jon.ui.adapter.TestRecyclerAdapter;
+import com.yidong.jon.view.FristView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class FristActivity extends BaseActivity {
+public class FristActivity extends BaseMvpActivity<FristPresenter> implements FristView{
+    private static final String TAG = "FristActivity";
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
@@ -30,7 +41,7 @@ public class FristActivity extends BaseActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false));
 
-        ArrayList<Integer> list = new ArrayList<>();
+        final ArrayList<Integer> list = new ArrayList<>();
         list.add(R.drawable.jessica);
         list.add(R.drawable.sunny);
         list.add(R.drawable.taeyeon);
@@ -40,7 +51,8 @@ public class FristActivity extends BaseActivity {
 
         TestRecyclerAdapter adapter = new TestRecyclerAdapter(this, list);
         recyclerView.setAdapter(adapter);
-        adapter.setmHeaderView(LayoutInflater.from(this).inflate(R.layout.header_view, recyclerView, false));
+        View headerView = LayoutInflater.from(this).inflate(R.layout.header_view, recyclerView, false);
+        adapter.setmHeaderView(headerView);
         adapter.setmEmptyView(LayoutInflater.from(this).inflate(R.layout.empty_view, recyclerView, false));
 //        FristAdapter fristAdapter = new FristAdapter(this);
 //        recyclerView.setAdapter(fristAdapter);
@@ -55,14 +67,40 @@ public class FristActivity extends BaseActivity {
         adapter.setOnRecyclerItemClickListener(new BaseRecyclerAdapter.OnRecyclerItemClickListener() {
             @Override
             public void setOnRecyclerItemClick(BaseViewHolder holder, int position) {
-                Toast.makeText(FristActivity.this, "position"+position, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(FristActivity.this, "position"+position, Toast.LENGTH_SHORT).show();
+                openActivity(SecondActivity.class, createViewInfoBundle(holder.itemView, list.get(position)));
+                overridePendingTransition(0,0);
             }
         });
+
+        ImageView img = ButterKnife.findById(headerView, R.id.header_img);
+
+        getVideoList();
+        ImageLoader build = new ImageLoader.Builder().url("http://mvavatar1.meitudata.com/581eb003a2b2d6798.jpg")
+                .placeHolder(R.mipmap.ic_launcher)
+                .imgView(img)
+                .build();
+        ImageLoaderUtil.getInstance().loadImage(this, build);
+    }
+
+    @Override
+    protected FristPresenter createPresenter() {
+        return new FristPresenter(this);
     }
 
     @Override
     public int getLayoutResId() {
         return R.layout.activity_frist;
+    }
+
+    public void getVideoList() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("id", 1);
+        map.put("page", 1);
+        map.put("count", 10);
+        map.put("max_id", "");
+
+        presenter.getInfo(map);
     }
 
     private Bundle createViewInfoBundle(View view, Integer i){
@@ -80,5 +118,20 @@ public class FristActivity extends BaseActivity {
         bundle.putInt("height", height);
         Log.i("bundle", "left:"+left+"top:"+top+"width:"+width+"height:"+height);
         return bundle;
+    }
+
+    @Override
+    public void showVideo(List<VideoEntity> list) {
+        Log.i(TAG, "list: "+list.toString());
+    }
+
+    @Override
+    public void showDialog() {
+
+    }
+
+    @Override
+    public void hideDialog() {
+
     }
 }

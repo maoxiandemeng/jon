@@ -29,10 +29,24 @@ public class HttpHelper {
     private Context mContext;
     private static final int DEFAULT_TIMEOUT = 30;
     private HashMap<String, Object> mServiceMap;
+    private static volatile HttpHelper instance;
 
     public HttpHelper(Context mContext) {
         this.mContext = mContext;
         mServiceMap = new HashMap<>();
+    }
+
+    public static HttpHelper getInstance(Context mContext) {
+        if (instance == null) {
+            synchronized (HttpHelper.class) {
+                if (instance == null) {
+                    synchronized (HttpHelper.class) {
+                        instance = new HttpHelper(mContext);
+                    }
+                }
+            }
+        }
+        return instance;
     }
 
     @SuppressWarnings("unchecked")
