@@ -75,7 +75,7 @@ public class FristActivity extends BaseMvpActivity<FristPresenter> implements Fr
 
         ImageView img = ButterKnife.findById(headerView, R.id.header_img);
 
-        getVideoList();
+//        getVideoList();
         ImageLoader build = new ImageLoader.Builder().url("http://mvavatar1.meitudata.com/581eb003a2b2d6798.jpg")
                 .placeHolder(R.mipmap.ic_launcher)
                 .imgView(img)

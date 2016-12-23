@@ -1,5 +1,6 @@
 package com.yidong.jon.base;
 
+import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -22,9 +23,18 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
     private View mHeaderView;
     private View mEmptyView;
     protected ArrayList<T> mData = new ArrayList<>();
+    protected Context context;
+
+    protected BaseRecyclerAdapter() {
+    }
 
     public void setOnRecyclerItemClickListener(OnRecyclerItemClickListener onRecyclerItemClickListener) {
         this.onRecyclerItemClickListener = onRecyclerItemClickListener;
+    }
+
+    protected BaseRecyclerAdapter(Context context, ArrayList<T> mData) {
+        this.context = context;
+        this.mData = mData;
     }
 
     public void setmHeaderView(View mHeaderView) {

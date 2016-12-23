@@ -58,6 +58,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--<activity-->
+            <!--android:name=".ui.activity.WelcomeActivity"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@style/FullScreen" />-->
         <activity
             android:name=".ui.activity.GuideActivity"
             android:screenOrientation="portrait"
@@ -82,7 +86,7 @@
         <activity android:name="com.jon.lib.SdkActivity" />
         <activity android:name=".download.DownloadActivity" />
         <activity android:name=".ui.activity.BadgerActivity" />
-        <activity android:name=".ui.activity.FlowActivity"></activity>
+        <activity android:name=".ui.activity.FlowActivity" />
 
         <meta-data
             android:name="Channel ID"
@@ -96,6 +100,7 @@
             android:authorities="com.yidong.jon.provider.MyContentProvider"
             android:exported="true" />
 
+        <activity android:name=".retrofitdownload.RetrofitDownloadActivity"></activity>
     </application>
 
 </manifest>

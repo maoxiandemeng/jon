@@ -5,11 +5,11 @@ import com.yidong.jon.model.VideoEntity;
 import java.util.HashMap;
 import java.util.List;
 
+import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
-import rx.Observable;
 
 /**
  * Created by Administrator on 2016/10/11.

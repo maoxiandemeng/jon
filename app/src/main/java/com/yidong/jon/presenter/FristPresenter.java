@@ -7,9 +7,12 @@ import com.yidong.jon.model.VideoEntity;
 import com.yidong.jon.retrofit.ApiCallback;
 import com.yidong.jon.view.FristView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,6 +30,7 @@ public class FristPresenter extends BasePresenter<FristView> {
 
     public void getInfo(HashMap<String, Object> map){
         addSubscription(request.getVideoList(map), new ApiCallback<List<VideoEntity>>() {
+
             @Override
             public void onSuccess(List<VideoEntity> model) {
                 Log.i(TAG, "onSuccess: ");
@@ -35,14 +39,50 @@ public class FristPresenter extends BasePresenter<FristView> {
 
             @Override
             public void onFailure(String msg) {
-                Log.i(TAG, "onFailure: ");
+
             }
 
             @Override
             public void onFinish() {
-                Log.i(TAG, "onFinish: ");
+
             }
         });
+        request.getVideoList(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new ApiCallback<List<VideoEntity>>() {
+                    @Override
+                    public void onSuccess(List<VideoEntity> model) {
+                        Log.i(TAG, "onSuccess2: ");
+                    }
+
+                    @Override
+                    public void onFailure(String msg) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+                });
+//        addSubscription(request.getVideoList(map), new ApiCallback<List<VideoEntity>>() {
+//            @Override
+//            public void onSuccess(List<VideoEntity> model) {
+//                Log.i(TAG, "onSuccess: ");
+//                view.showVideo(model);
+//            }
+//
+//            @Override
+//            public void onFailure(String msg) {
+//                Log.i(TAG, "onFailure: ");
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                Log.i(TAG, "onFinish: ");
+//            }
+//        });
 
         request.getVideo(map).enqueue(new Callback<ResponseBody>() {
             @Override
