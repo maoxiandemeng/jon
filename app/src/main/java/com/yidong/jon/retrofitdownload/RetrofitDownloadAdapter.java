@@ -12,6 +12,10 @@ import android.widget.TextView;
 import com.yidong.jon.R;
 import com.yidong.jon.base.BaseRecyclerAdapter;
 import com.yidong.jon.base.BaseViewHolder;
+import com.yidong.jon.retrofit.download.DownInfo;
+import com.yidong.jon.retrofit.download.DownState;
+import com.yidong.jon.retrofit.download.HttpDownManager;
+import com.yidong.jon.retrofit.download.listener.HttpDownOnNextListener;
 import com.yidong.jon.retrofitdownload.download.DownLoadBackListener;
 import com.yidong.jon.retrofitdownload.download.DownLoadManager;
 import com.yidong.jon.retrofitdownload.download.db.DownLoadEntity;
@@ -31,7 +35,7 @@ public class RetrofitDownloadAdapter extends BaseRecyclerAdapter<DownLoadEntity>
 
     public RetrofitDownloadAdapter(Context context, ArrayList<DownLoadEntity> mData) {
         super(context, mData);
-        NetWorkRequest.getInstance().init(context, "");
+        NetWorkRequest.getInstance().init(context, "http://newapi.meipai.com/output/");
     }
 
     @Override

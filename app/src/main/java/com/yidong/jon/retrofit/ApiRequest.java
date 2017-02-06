@@ -5,11 +5,11 @@ import com.yidong.jon.model.VideoEntity;
 import java.util.HashMap;
 import java.util.List;
 
-import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
+import rx.Observable;
 
 /**
  * Created by Administrator on 2016/10/11.
@@ -21,5 +21,8 @@ public interface ApiRequest {
     Observable<List<VideoEntity>> getVideoList(@QueryMap HashMap<String, Object> map);
 
     @GET("channels_topics_timeline.json")
-    Call<ResponseBody> getVideo(@QueryMap HashMap<String, Object> map);
+    Observable<Result<List<VideoEntity>>> getVideoList2(@QueryMap HashMap<String, Object> map);
+
+    @GET("channels_topics_timeline.json")
+    Call<List<VideoEntity>> getVideo(@QueryMap HashMap<String, Object> map);
 }

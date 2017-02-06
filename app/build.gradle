@@ -1,14 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
+apply plugin: 'org.greenrobot.greendao'
 
 def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
 
 android {
-    packagingOptions {
-        exclude('META-INF/rxjava.properties')
-    }
+//    packagingOptions {
+//        exclude('META-INF/rxjava.properties')
+//    }
     compileSdkVersion 25
     buildToolsVersion '24.0.2'
     defaultConfig {
@@ -107,8 +108,14 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.alibaba:fastjson:1.2.20'
-    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+//    compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+//    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex:rxjava:1.2.1'
+    compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'jp.wasabeef:glide-transformations:2.0.1'
+    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0'
     compile 'com.liulishuo.filedownloader:library:1.3.0'
+
+    compile 'org.greenrobot:greendao:3.2.0'
 }

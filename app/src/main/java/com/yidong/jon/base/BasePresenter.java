@@ -1,18 +1,14 @@
 package com.yidong.jon.base;
 
-import android.content.Context;
-
 import com.yidong.jon.MyApplication;
-import com.yidong.jon.retrofit.HttpHelper;
 import com.yidong.jon.retrofit.ApiRequest;
+import com.yidong.jon.retrofit.HttpHelper;
 
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
-
 
 /**
  * Created by jon on 2016/12/20
@@ -21,7 +17,7 @@ import rx.subscriptions.CompositeSubscription;
 public class BasePresenter<V> {
     public V view;
     protected ApiRequest request;
-//    private CompositeSubscription mCompositeSubscription;
+    private CompositeSubscription mCompositeSubscription;
 
     public void attachView(V view) {
         this.view = view;
@@ -33,24 +29,24 @@ public class BasePresenter<V> {
         onUnsubscribe();
     }
 
-    public void addSubscription(Observable observable, Consumer subscriber) {
-        observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
-//        if (mCompositeSubscription == null) {
-//            mCompositeSubscription = new CompositeSubscription();
-//        }
-//        mCompositeSubscription.add(observable
+    public void addSubscription(Observable observable, Subscriber subscriber) {
+//        observable
 //                .subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(subscriber));
+//                .subscribe(subscriber);
+        if (mCompositeSubscription == null) {
+            mCompositeSubscription = new CompositeSubscription();
+        }
+        mCompositeSubscription.add(observable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber));
     }
 
     //RXjava取消注册，以避免内存泄露
     private void onUnsubscribe() {
-//        if (mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions()) {
-//            mCompositeSubscription.unsubscribe();
-//        }
+        if (mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions()) {
+            mCompositeSubscription.unsubscribe();
+        }
     }
 }

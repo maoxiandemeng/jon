@@ -83,6 +83,14 @@
         android:padding="8dp"
         android:text="流式布局" />
 
+    <TextView
+        android:id="@+id/glide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Gide" />
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="100dp"

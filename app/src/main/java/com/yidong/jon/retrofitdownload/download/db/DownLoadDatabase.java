@@ -12,10 +12,22 @@ import java.util.List;
 public class DownLoadDatabase {
 
     private final DatabaseHelper dbHelper;
+    private static volatile DownLoadDatabase instance;
 
     public DownLoadDatabase(Context context) {
         super();
         dbHelper = new DatabaseHelper(context);
+    }
+
+    public static DownLoadDatabase getInstance(Context context) {
+        if (instance == null) {
+            synchronized (DownLoadDatabase.class) {
+                if (instance == null) {
+                    instance = new DownLoadDatabase(context);
+                }
+            }
+        }
+        return instance;
     }
 
     /**

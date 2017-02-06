@@ -1,5 +1,6 @@
 package com.yidong.jon.retrofitdownload.download;
 
+import com.yidong.jon.MyApplication;
 import com.yidong.jon.retrofitdownload.download.db.DownLoadDatabase;
 import com.yidong.jon.retrofitdownload.download.db.DownLoadEntity;
 import com.yidong.jon.retrofitdownload.retrofit.NetWorkRequest;
@@ -14,7 +15,7 @@ import java.util.concurrent.Executors;
 
 public class DownLoadManager {
 
-    private DownLoadDatabase mDownLoadDatabase = new DownLoadDatabase(NetWorkRequest.getInstance().mContext);
+    private DownLoadDatabase mDownLoadDatabase;
 
     private ExecutorService mExecutorService = Executors.newCachedThreadPool();
 
@@ -24,15 +25,21 @@ public class DownLoadManager {
     //所有下载Task
     private Map<String, DownLoadRequest> mDownLoadRequestMap = new ConcurrentHashMap<>();
 
-    private DownLoadManager() {
-    }
+    private static volatile DownLoadManager instance;
 
-    private static class DownLoadManagerHolder {
-        private static final DownLoadManager INSTANCE = new DownLoadManager();
+    private DownLoadManager() {
+        mDownLoadDatabase = DownLoadDatabase.getInstance(MyApplication.context);
     }
 
     public static final DownLoadManager getInstance() {
-        return DownLoadManagerHolder.INSTANCE;
+        if (instance == null) {
+            synchronized (DownLoadManager.class) {
+                if (instance == null) {
+                    instance = new DownLoadManager();
+                }
+            }
+        }
+        return instance;
     }
 
     //默认支持多线程下载

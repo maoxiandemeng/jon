@@ -20,6 +20,7 @@ import com.yidong.jon.ui.activity.BehaviorActivity;
 import com.yidong.jon.ui.activity.CardPageActivity;
 import com.yidong.jon.ui.activity.FlowActivity;
 import com.yidong.jon.ui.activity.FristActivity;
+import com.yidong.jon.ui.activity.GlideActivity;
 import com.yidong.jon.ui.activity.LoadingActivity;
 import com.yidong.jon.ui.activity.StickActivity;
 import com.yidong.jon.ui.activity.WaterActivity;
@@ -114,6 +115,11 @@ public class HomeFragment extends BaseFragment {
     @OnClick(R.id.flow)
     public void onFlow() {
         openActivity(FlowActivity.class);
+    }
+
+    @OnClick(R.id.glide)
+    public void onGlide() {
+        openActivity(GlideActivity.class);
     }
 
     @Override

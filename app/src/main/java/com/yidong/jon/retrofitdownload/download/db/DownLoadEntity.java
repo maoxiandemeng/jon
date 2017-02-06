@@ -17,6 +17,7 @@ public class DownLoadEntity implements Parcelable {
     public String lastModify;
     public boolean isSupportMulti;
     public String name;
+    public int state;
 
     public DownLoadEntity() {
     }
@@ -43,6 +44,7 @@ public class DownLoadEntity implements Parcelable {
         dest.writeString(this.saveName);
         dest.writeTypedList(multiList);
         dest.writeString(this.name);
+        dest.writeInt(this.state);
     }
 
     protected DownLoadEntity(Parcel in) {
@@ -55,6 +57,7 @@ public class DownLoadEntity implements Parcelable {
         this.saveName = in.readString();
         this.multiList = in.createTypedArrayList(DownLoadEntity.CREATOR);
         this.name = in.readString();
+        this.state = in.readInt();
     }
 
     public static final Creator<DownLoadEntity> CREATOR = new Creator<DownLoadEntity>() {

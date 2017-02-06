@@ -40,9 +40,7 @@ public class HttpHelper {
         if (instance == null) {
             synchronized (HttpHelper.class) {
                 if (instance == null) {
-                    synchronized (HttpHelper.class) {
                         instance = new HttpHelper(mContext);
-                    }
                 }
             }
         }

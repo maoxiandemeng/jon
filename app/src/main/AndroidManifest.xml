@@ -58,10 +58,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity-->
-            <!--android:name=".ui.activity.WelcomeActivity"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:theme="@style/FullScreen" />-->
+        <!-- <activity -->
+        <!-- android:name=".ui.activity.WelcomeActivity" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:theme="@style/FullScreen" /> -->
         <activity
             android:name=".ui.activity.GuideActivity"
             android:screenOrientation="portrait"
@@ -100,7 +100,8 @@
             android:authorities="com.yidong.jon.provider.MyContentProvider"
             android:exported="true" />
 
-        <activity android:name=".retrofitdownload.RetrofitDownloadActivity"></activity>
+        <activity android:name=".retrofitdownload.RetrofitDownloadActivity" />
+        <activity android:name=".ui.activity.GlideActivity"></activity>
     </application>
 
 </manifest>

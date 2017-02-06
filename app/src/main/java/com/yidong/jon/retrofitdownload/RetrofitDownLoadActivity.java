@@ -4,29 +4,50 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import com.yidong.jon.MyApplication;
 import com.yidong.jon.R;
 import com.yidong.jon.base.BaseActivity;
+import com.yidong.jon.retrofit.download.DbDownUtil;
+import com.yidong.jon.retrofit.download.DownInfo;
+import com.yidong.jon.retrofit.download.DownState;
+import com.yidong.jon.retrofitdownload.download.db.DownLoadDatabase;
 import com.yidong.jon.retrofitdownload.download.db.DownLoadEntity;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
 public class RetrofitDownloadActivity extends BaseActivity {
+    private static final String TAG = "RetrofitDownloadActivit";
     @BindView(R.id.download_recycler)
     RecyclerView downloadRecycler;
+
+    private DownLoadDatabase downLoadDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        downLoadDatabase = DownLoadDatabase.getInstance(MyApplication.context);
         downloadRecycler.setLayoutManager(new LinearLayoutManager(this));
         String s = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "retrofitDownload" + File.separator;
         File file = new File(s);
         if (!file.isDirectory()) {
             file.mkdir();
+        }
+        List<DownLoadEntity> loadEntities = downLoadDatabase.query("");
+        if (!loadEntities.isEmpty()) {
+            for (int i = 0; i < loadEntities.size(); i++) {
+                DownLoadEntity entity = loadEntities.get(i);
+                if (!(new File(entity.saveName).exists())) {
+                    downLoadDatabase.deleteAllByUrl(entity.url);
+                    loadEntities.remove(entity);
+                }
+            }
         }
         ArrayList<DownLoadEntity> loadTests = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
@@ -73,4 +94,9 @@ public class RetrofitDownloadActivity extends BaseActivity {
             "http://apps.wandoujia.com/apps/com.jm.android.jumei/download",
             "http://download.3g.fang.com/soufun_android_30001_7.9.0.apk"
     };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
