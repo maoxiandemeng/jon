@@ -91,6 +91,15 @@ public class DbDownUtil {
     }
 
     /**
+     * 删除表
+     */
+    public void drapTable(){
+        DaoMaster daoMaster = new DaoMaster(getWriteableDatabase());
+        DaoSession daoSession = daoMaster.newSession();
+        DownInfoDao.dropTable(daoSession.getDatabase(), true);
+    }
+
+    /**
      * 根据传入的id获得DownInfo
      * @param id
      * @return

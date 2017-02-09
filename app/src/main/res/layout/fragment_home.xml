@@ -91,6 +91,14 @@
         android:padding="8dp"
         android:text="Gide" />
 
+    <TextView
+        android:id="@+id/rx_java"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="RxJavaDemo" />
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="100dp"

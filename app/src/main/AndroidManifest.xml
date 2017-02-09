@@ -101,7 +101,8 @@
             android:exported="true" />
 
         <activity android:name=".retrofitdownload.RetrofitDownloadActivity" />
-        <activity android:name=".ui.activity.GlideActivity"></activity>
+        <activity android:name=".ui.activity.GlideActivity" />
+        <activity android:name=".rxjava.RxJavaActivity"></activity>
     </application>
 
 </manifest>
