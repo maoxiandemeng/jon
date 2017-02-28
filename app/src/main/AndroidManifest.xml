@@ -102,7 +102,9 @@
 
         <activity android:name=".retrofitdownload.RetrofitDownloadActivity" />
         <activity android:name=".ui.activity.GlideActivity" />
-        <activity android:name=".rxjava.RxJavaActivity"></activity>
+        <activity android:name=".rxjava.RxJavaActivity" />
+        <activity android:name=".nestedscroll.NestedScrollActivity" />
+        <activity android:name=".nestedscroll.NestedScroll2Activity"></activity>
     </application>
 
 </manifest>

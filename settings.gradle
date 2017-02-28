@@ -1,1 +1,1 @@
-include ':app', ':libsdk'
+include ':app', ':libsdk', ':java'
