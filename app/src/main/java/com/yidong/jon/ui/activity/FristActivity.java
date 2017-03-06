@@ -1,5 +1,6 @@
 package com.yidong.jon.ui.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -42,6 +43,12 @@ public class FristActivity extends BaseMvpActivity<FristPresenter> implements Fr
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false));
 
         final ArrayList<Integer> list = new ArrayList<>();
+        list.add(R.drawable.jessica);
+        list.add(R.drawable.sunny);
+        list.add(R.drawable.taeyeon);
+        list.add(R.drawable.tiffany);
+        list.add(R.drawable.yoona);
+        list.add(R.drawable.yuri);
         list.add(R.drawable.jessica);
         list.add(R.drawable.sunny);
         list.add(R.drawable.taeyeon);
@@ -113,7 +120,7 @@ public class FristActivity extends BaseMvpActivity<FristPresenter> implements Fr
         int height = view.getHeight();
         bundle.putInt("drawable", i);
         bundle.putInt("left", left);
-        bundle.putInt("top", top);
+        bundle.putInt("top", top - getStatusBarHeight(this));
         bundle.putInt("width", width);
         bundle.putInt("height", height);
         Log.i("bundle", "left:"+left+"top:"+top+"width:"+width+"height:"+height);
@@ -133,5 +140,29 @@ public class FristActivity extends BaseMvpActivity<FristPresenter> implements Fr
     @Override
     public void hideDialog() {
 
+    }
+
+    /**
+     * 获取状态栏高度
+     *
+     * @return
+     */
+    public static int getStatusBarHeight(Context context) {
+        Class<?> c = null;
+        Object obj = null;
+        java.lang.reflect.Field field = null;
+        int x = 0;
+        int statusBarHeight = 0;
+        try {
+            c = Class.forName("com.android.internal.R$dimen");
+            obj = c.newInstance();
+            field = c.getField("status_bar_height");
+            x = Integer.parseInt(field.get(obj).toString());
+            statusBarHeight = context.getResources().getDimensionPixelSize(x);
+            return statusBarHeight;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return statusBarHeight;
     }
 }
